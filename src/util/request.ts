@@ -21,3 +21,24 @@ export async function createSoloon(operation: SpaceObject) {
 export async function createCometh(operation: SpaceObject) {
     return axios.post(`https://challenge.crossmint.io/api/comeths?candidateId=${config.STUDENT_ID}`, { row: operation.row, column: operation.column, candidateId: config.STUDENT_ID, direction: operation.specification })
 }
+
+export async function deletePolyplanets(operation: SpaceObject) {
+    return axios.delete(`https://challenge.crossmint.io/api/polyanets?candidateId=${config.STUDENT_ID}`, {
+
+        data: { row: operation.row, column: operation.column, candidateId: config.STUDENT_ID }
+    })
+}
+
+export async function deleteCometh(operation: SpaceObject) {
+    return axios.delete(`https://challenge.crossmint.io/api/comeths?candidateId=${config.STUDENT_ID}`, {
+
+        data: { row: operation.row, column: operation.column, candidateId: config.STUDENT_ID }
+    })
+}
+
+export async function deleteSoloon(operation: SpaceObject) {
+    return axios.delete(`https://challenge.crossmint.io/api/soloons?candidateId=${config.STUDENT_ID}`, {
+
+        data: { row: operation.row, column: operation.column, candidateId: config.STUDENT_ID }
+    })
+}

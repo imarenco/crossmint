@@ -4,13 +4,13 @@ import { SpaceObject, SpaceObjectType, SPACE } from '../model/SpaceObject';
 export function getObjectOperations(goals: CoordinateTree): SpaceObject[] {
     const coordinates: SpaceObject[] = [];
 
-    for (let columnIndex = 0; columnIndex < goals.length; columnIndex++) {
-        const column = goals[columnIndex];
-        for (let rowIndex = 0; rowIndex < column.length; rowIndex++) {
-            const type: string = column[rowIndex];
+    for (let rowIndex = 0; rowIndex < goals.length; rowIndex++) {
+        const row = goals[rowIndex];
+        for (let columnIndex = 0; columnIndex < row.length; columnIndex++) {
+            const type: string = row[columnIndex];
 
             if (type !== SPACE) {
-                const str = column[rowIndex].split('_');
+                const str = row[columnIndex].split('_');
                 coordinates.push({
                     column: columnIndex.toString(),
                     row: rowIndex.toString(),

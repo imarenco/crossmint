@@ -1,6 +1,6 @@
 import { POLYANET, COMETH, SOLOON, SpaceObject, SpaceObjectType } from "../model/SpaceObject";
 import { logger } from "./logger";
-import { createCometh, createPolyanets, createSoloon } from "./request";
+import { createCometh, createPolyanets, createSoloon, deleteCometh, deletePolyplanets, deleteSoloon } from "./request";
 
 function delay(time: number) {
     return new Promise(resolve => setTimeout(resolve, time));
@@ -33,6 +33,22 @@ export async function createSpaceObject(operation: SpaceObject) {
             break;
         case COMETH:
             await responseResolver(createCometh, operation);
+            break;
+        default:
+            break;
+    }
+}
+
+export async function deleteSpaceObject(operation: SpaceObject) {
+    switch (operation.type.toString()) {
+        case POLYANET:
+            await responseResolver(deletePolyplanets, operation);
+            break;
+        case SOLOON:
+            await responseResolver(deleteSoloon, operation);
+            break;
+        case COMETH:
+            await responseResolver(deleteCometh, operation);
             break;
         default:
             break;
