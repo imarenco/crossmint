@@ -7,6 +7,8 @@ async function startCreation() {
     try {
         const goalCoords = await getGoalCoordinates();
         const objectOperations = getObjectOperations(goalCoords);
+
+        // I did not make requests in parallel here because the api has a low rate limit.
         for (let index = 0; index < objectOperations.length; index++) {
             await createSpaceObject(objectOperations[index]);
         }
